@@ -19,21 +19,21 @@ class Segment:
         # print('conc')
         # print(self)
         # print(other)
-        if self.left and other.left:
+        if self.left != None and other.left != None:
             self.left = min(self.left, other.left)
             self.right = max(self.right, other.right)
-        elif other.left:
+        elif other.left != None:
             self.left = other.left
             self.right = other.right
         return self
 
     def __add__(self, other):
-        if self.left and other.left:
+        if self.left != None and other.left != None:
             return Segment(self.left + other.left, self.right + other.right)
         return Segment(None, None)
 
     def __sub__(self, other):
-        if self.left and other.left:
+        if self.left != None and other.left != None:
             return Segment(self.left - other.right, self.right - other.left)
         return Segment(None, None)
 
@@ -42,14 +42,14 @@ class Segment:
         ans = []
         for i in range(2):
             for j in range(2, 4):
-                if comb[i] and comb[j]:
+                if comb[i] != None and comb[j] != None:
                     ans.append(comb[i] * comb[j])
                 else:
                     return Segment(None, None)
         return Segment(min(ans), max(ans))
 
     def __lshift__(self, other: int):  # cut interval from right side
-        if not self.right:
+        if self.right == None:
             return Segment(None, None)
         tmp = min(other, self.right)
         if tmp < self.left:
@@ -57,7 +57,7 @@ class Segment:
         return Segment(self.left, tmp)
 
     def __rshift__(self, other: int):  # cut interval from left side
-        if not self.left:
+        if self.left == None:
             return Segment(None, None)
         tmp = max(other, self.left)
         if tmp > self.right:
@@ -156,7 +156,6 @@ def f_jl(ver: int, edge: str):
     if edge == 'jnl':
         return f_jge(ver, 'jge')
     last_com = vertices[ver].commands[-1]
-    table = last_com.OUT
     op1 = last_com.com[1]
     op2 = last_com.com[2]
     tmp = copy.copy(last_com.IN)
@@ -171,7 +170,6 @@ def f_jle(ver: int, edge: str):
     if edge == 'jnle':
         return f_jg(ver, 'jg')
     last_com = vertices[ver].commands[-1]
-    table = last_com.OUT
     op1 = last_com.com[1]
     op2 = last_com.com[2]
     tmp = copy.copy(last_com.IN)
@@ -186,7 +184,6 @@ def f_jg(ver: int, edge: str):
     if edge == 'jng':
         return f_jle(ver, 'jle')
     last_com = vertices[ver].commands[-1]
-    table = last_com.OUT
     op1 = last_com.com[1]
     op2 = last_com.com[2]
     tmp = copy.copy(last_com.IN)
@@ -201,7 +198,6 @@ def f_jge(ver: int, edge: str):
     if edge == 'jnge':
         return f_jl(ver, 'jl')
     last_com = vertices[ver].commands[-1]
-    table = last_com.OUT
     op1 = last_com.com[1]
     op2 = last_com.com[2]
     tmp = copy.copy(last_com.IN)
@@ -284,6 +280,8 @@ if __name__ == "__main__":
     vertices[order[0]].commands[0].IN = {"arg0": Segment(left_x, right_x),
                                          "arg1": Segment(left_y, right_y)}
     for v in order:
+        if v == 2:
+            pass
         calculating(v)
     for v in order:
         for command in vertices[v].commands:
@@ -294,4 +292,5 @@ if __name__ == "__main__":
             print("OUT:")
             for key in command.OUT.keys():
                 print(key, command.OUT[key], sep=': ')
+    print(f'Using limitations for x: {left_x}, {right_x} and y: {left_y}, {right_y}')
     print('Limitations for return value:', vertices[order[-1]].commands[-1].OUT['ret'])
