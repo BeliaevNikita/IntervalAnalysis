@@ -16,9 +16,6 @@ class Segment:
         self.right = right
 
     def __iadd__(self, other): #intersection
-        # print('conc')
-        # print(self)
-        # print(other)
         if self.left != None and other.left != None:
             self.left = min(self.left, other.left)
             self.right = max(self.right, other.right)
