@@ -22,22 +22,22 @@
 ## Funcs
 Функции, соотоветсвующие командам add, sub, mul, str принимает операнды этих инстуркций и таблицу состояний IN и возвращают новую таблицу состояний OUT. Функции перехода принимают в качестве параметров номер блока из которого будет совершен переход и истинность или ложность условия перехода (выраженно со помощью строки)
 ## Results
-Результаты работы программы
-Using limitations for x: -3, 4 and y: 3, 5
-Limitations for return value: [-4, 3]
-Using limitations for x: -3, 4 and y: -2, 1
-Limitations for return value: [-4, 8]
-Using limitations for x: -3, 4 and y: -3, -1
+Результаты работы программы        
+Using limitations for x: -3, 4 and y: 3, 5       
+Limitations for return value: [-4, 3]      
+Using limitations for x: -3, 4 and y: -2, 1      
+Limitations for return value: [-4, 8]       
+Using limitations for x: -3, 4 and y: -3, -1     
 Limitations for return value: [-4, 9]
-Using limitations for x: 0, 3 and y: 3, 5
-Limitations for return value: [-3, 0]
-Using limitations for x: 0, 3 and y: -2, 1
-Limitations for return value: [-3, 0]
-Using limitations for x: 0, 3 and y: -3, -1
-Limitations for return value: [-3, 0]
-Using limitations for x: -4, 8 and y: 3, 5
-Limitations for return value: [-29, 5]
-Using limitations for x: -4, 8 and y: -2, 1
-Limitations for return value: [-34, 10]
-Using limitations for x: -4, 8 and y: -3, -1
-Limitations for return value: [-35, 11]
+Using limitations for x: 0, 3 and y: 3, 5      
+Limitations for return value: [-3, 0]      
+Using limitations for x: 0, 3 and y: -2, 1    
+Limitations for return value: [-3, 0]     
+Using limitations for x: 0, 3 and y: -3, -1    
+Limitations for return value: [-3, 0]     
+Using limitations for x: -4, 8 and y: 3, 5    
+Limitations for return value: [-29, 5]     
+Using limitations for x: -4, 8 and y: -2, 1     
+Limitations for return value: [-34, 10]     
+Using limitations for x: -4, 8 and y: -3, -1     
+Limitations for return value: [-35, 11]     
